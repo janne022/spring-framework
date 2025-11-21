@@ -17,9 +17,10 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Build and run tests
+        working-directory: spring-framework
         run: mvn clean test
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: junit-reports
-          path: "**/target/surefire-reports/*.xml"
+          path: "spring-framework/**/target/surefire-reports/*.xml"
