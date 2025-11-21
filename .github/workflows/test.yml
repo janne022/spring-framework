@@ -17,10 +17,10 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Build and run tests
-        working-directory: spring-framework
-        run: mvn clean test
+        run: ./gradlew check
       - name: Upload test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: junit-reports
-          path: "spring-framework/**/target/surefire-reports/*.xml"
+          path: "**/build/test-results/**/*.xml"
